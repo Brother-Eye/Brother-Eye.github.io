@@ -6,3 +6,9 @@ linkElement.addEventListener("message", function(event){
     console.log("data correct");
   }
 }, false)
+
+const linkTest = document.getElementById("button-test");
+linkTest.addEventListener("click", function(event){
+  console.log("click test");
+  window.open("teladolink.html")
+}, false)
