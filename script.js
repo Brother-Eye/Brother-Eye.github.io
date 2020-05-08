@@ -4,12 +4,11 @@ linkElement.addEventListener("message", function(event){
   console.log(event);
   if (event.data == "_apple_ar_quicklook_button_tapped") {
     window.open("https://www.google.com.br")
-=======
+
   console.log("message sent");
   window.open("https://www.google.com.br")
   console.log(event);
   if (event.data == "apple_ar_quicklook_button_tapped") {
->>>>>>> parent of ec1f449... alteração call to action
     console.log("data correct");
   }
 }, false)
