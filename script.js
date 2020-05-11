@@ -1,3 +1,5 @@
+document.onload = function(){
+  console.log("carregando USDZ"); window.open("teste_animacao.usdz#callToAction=Add%20to%20cart&checkoutTitle=Bolsa%20Padra&checkoutSubtitle=Bolsa%20Padra%20feita%20em%20couro&price=$500",_top)}
 const linkElement = document.getElementById("ar-link");
 linkElement.addEventListener("message", function(event){
   console.log(event);
