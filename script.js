@@ -1,5 +1,6 @@
 $(document).ready(function(){
-  $("#ar-link").click()
+  $("#ar-link").trigger("click")
+  console.log("DOM ready");
 })
 const linkElement = document.getElementById("ar-link");
 linkElement.addEventListener("message", function(event){
