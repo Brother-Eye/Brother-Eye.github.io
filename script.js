@@ -1,7 +1,7 @@
-$(document).ready(function(){
+window.addEventListener("load", function(){
   $("#ar-link").trigger("click")
   console.log("DOM ready");
-})
+});
 const linkElement = document.getElementById("ar-link");
 linkElement.addEventListener("message", function(event){
   console.log(event);
