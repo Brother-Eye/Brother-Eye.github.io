@@ -1,5 +1,5 @@
 window.addEventListener("load", function(){
-  $("#ar-link").trigger("click")
+  $("#ar-link").click();
   console.log("DOM ready");
 });
 const linkElement = document.getElementById("ar-link");
