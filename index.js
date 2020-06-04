@@ -36,7 +36,7 @@ scene.add(trackerGroup);
 // Add some content
 let box = new THREE.Mesh(
     new THREE.BoxBufferGeometry(),
-    new THREE.MeshBasicMaterial()
+    new THREE.MeshBasicMaterial({ color: 0x0000ff})
 );
 box.position.set(0, 0, 0.5);
 trackerGroup.add(box);
@@ -45,6 +45,8 @@ trackerGroup.add(box);
 function render() {
     requestAnimationFrame(render);
     camera.updateFrame(renderer);
+
+    box.rotation.x += 0.1;
 
     renderer.render(scene, camera);
 }
