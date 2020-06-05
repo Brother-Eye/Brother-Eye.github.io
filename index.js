@@ -38,8 +38,45 @@ let box = new THREE.Mesh(
     new THREE.BoxBufferGeometry(),
     new THREE.MeshBasicMaterial({ color: 0x0000ff})
 );
-box.position.set(0, 0, 0.5);
-trackerGroup.add(box);
+
+var gltf_group = new THREE.Group();
+gltf_group.scale.set(1000,1000,1000);
+
+var loader = new THREE.GLTFLoader();
+var mixer,anim0;
+
+loader.load(
+  'pernas_cocacola.gltf',
+   function(gltf){
+
+     gltf_group.add( gltf.scene );
+     gltf.animations;
+     gltf.scene;
+     gltf.scenes;
+     gltf.cameras;
+     gltf.assets;
+     // gltf.scene.children[1].visible = false;
+     mixer = new THREE.AnimationMixer(gltf.scene);
+     anim0 = mixer.clipAction(gltf.animations[0]);
+
+     anim0.play();
+   },
+
+   function(xhr){
+     console.log(( xhr.loaded / xhr.total * 100) + '%loaded');
+   },
+   function(error){
+     console.log( 'An error happened: ' + error );
+   }
+ );
+
+ var group = new THREE.Group()
+ group.position.set(0,0,0);
+ group.add( box );
+ group.add( gltf_group );
+
+// box.position.set(0, 0, 0.5);
+trackerGroup.add(group);
 
 // Set up our render loop
 function render() {
