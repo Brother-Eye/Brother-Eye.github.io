@@ -1,3 +1,4 @@
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 // ZapparThree provides a LoadingManager that shows a progress bar while
 // the assets are downloaded
 let manager = new ZapparThree.LoadingManager();
@@ -42,7 +43,7 @@ let box = new THREE.Mesh(
 var gltf_group = new THREE.Group();
 gltf_group.scale.set(1000,1000,1000);
 
-var loader = new THREE.GLTFLoader();
+var loader = new THREE.glTFLoader();
 var mixer,anim0;
 
 loader.load(
