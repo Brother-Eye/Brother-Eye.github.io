@@ -1,4 +1,4 @@
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 // ZapparThree provides a LoadingManager that shows a progress bar while
 // the assets are downloaded
 let manager = new ZapparThree.LoadingManager();
