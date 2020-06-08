@@ -1,4 +1,7 @@
-// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+const modelFile = "pernas_cocacola.gltf"
+
+const loader = new THREE.GLTFLoader()
+
 // ZapparThree provides a LoadingManager that shows a progress bar while
 // the assets are downloaded
 let manager = new ZapparThree.LoadingManager();
@@ -28,63 +31,31 @@ ZapparThree.permissionRequestUI().then(function(granted) {
     else ZapparThree.permissionDeniedUI();
 });
 
-// Set up our image tracker group
-// Pass our loading manager in to ensure the progress bar works correctly
+// Set up our instant tracker group
 let tracker = new ZapparThree.ImageTrackerLoader(manager).load("example-tracking-image.zpt");
 let trackerGroup = new ZapparThree.ImageAnchorGroup(camera, tracker);
 scene.add(trackerGroup);
 
-// Add some content
-let box = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(),
-    new THREE.MeshBasicMaterial({ color: 0x0000ff})
-);
-
-var gltf_group = new THREE.Group();
-gltf_group.scale.set(1000,1000,1000);
-
-var loader = new THREE.GLTFLoader();
-var mixer,anim0;
-
 loader.load(
-  'pernas_cocacola.gltf',
-   function(gltf){
+  // resource URL
+  modelFile,
+  // loaded handler
+  (gltf) => {
+    model = gltf.scene;
+    
+trackerGroup.add(model);
 
-     gltf_group.add( gltf.scene );
-     gltf.animations;
-     gltf.scene;
-     gltf.scenes;
-     gltf.cameras;
-     gltf.assets;
-     // gltf.scene.children[1].visible = false;
-     mixer = new THREE.AnimationMixer(gltf.scene);
-     anim0 = mixer.clipAction(gltf.animations[0]);
-
-     anim0.play();
-   },
-
-   function(xhr){
-     console.log(( xhr.loaded / xhr.total * 100) + '%loaded');
-   },
-   function(error){
-     console.log( 'An error happened: ' + error );
-   }
- );
-
- var group = new THREE.Group()
- group.position.set(0,0,0);
- group.add( box );
- group.add( gltf_group );
-
-// box.position.set(0, 0, 0.5);
-trackerGroup.add(group);
+  },
+  (xhr) => { console.log(`${(xhr.loaded / xhr.total * 100)}% loaded`) },
+  (error) => {console.log('Error loading .gltf model:', error)}
+)
 
 // Set up our render loop
 function render() {
     requestAnimationFrame(render);
     camera.updateFrame(renderer);
-
-    box.rotation.x += 0.1;
+    
+    if (!hasPlaced) tracker.setAnchorPoseFromCameraOffset(0, 0, -5);
 
     renderer.render(scene, camera);
 }
