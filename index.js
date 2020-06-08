@@ -43,7 +43,7 @@ let box = new THREE.Mesh(
 var gltf_group = new THREE.Group();
 gltf_group.scale.set(1000,1000,1000);
 
-var loader = new THREE.glTFLoader();
+var loader = new THREE.GLTFLoader();
 var mixer,anim0;
 
 loader.load(
