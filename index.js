@@ -1,6 +1,6 @@
-const modelFile = "pernas_cocacola.gltf"
+const modelFile = "pernas_cocacola.gltf";
 
-const loader = new THREE.GLTFLoader()
+const loader = new THREE.GLTFLoader();
 
 // ZapparThree provides a LoadingManager that shows a progress bar while
 // the assets are downloaded
@@ -42,7 +42,7 @@ loader.load(
   // loaded handler
   (gltf) => {
     model = gltf.scene;
-    
+
 trackerGroup.add(model);
 
   },
@@ -54,7 +54,7 @@ trackerGroup.add(model);
 function render() {
     requestAnimationFrame(render);
     camera.updateFrame(renderer);
-    
+
     if (!hasPlaced) tracker.setAnchorPoseFromCameraOffset(0, 0, -5);
 
     renderer.render(scene, camera);
